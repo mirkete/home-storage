@@ -13,7 +13,19 @@ function createRouter () {
     try {
       const files = await fs.readdir(path.join(process.cwd(), 'files'))
 
-      res.status(200).json(files)
+      for (let i = 0; i < files.length; i++) {
+        const extName = path.extname(files[i])
+        const type = extName ? 'file' : 'folder'
+
+        files[i] = {
+          name: files[i],
+          type
+        }
+      }
+
+      const orderedFiles = files.sort((a, b) => a.type === 'folder' ? -1 : 1)
+
+      res.status(200).json(orderedFiles)
     } catch (e) {
       res.status(500).send('server error')
     }
@@ -26,8 +38,8 @@ function createRouter () {
     }
 
     try {
-      const { name } = file
-      await fs.writeFile(path.join(process.cwd(), 'files', name), file.data, { encoding: 'utf-8' })
+      const { name, data } = file
+      await fs.writeFile(path.join(process.cwd(), 'files', name), data, { encoding: 'utf-8' })
       res.status(200).send('file uploaded!')
     } catch (e) {
       console.log(e)

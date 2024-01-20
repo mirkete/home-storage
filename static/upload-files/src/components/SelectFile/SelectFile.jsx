@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { uploadFile } from "../../logic/SelectFile.js"
 import "./SelectFile.css"
 
-function SelectFile(){
+function SelectFile({filesCount, setFilesCount}){
     const [file, setFile] = useState(null)
     const [response, setResponse] = useState(null)
     const [loading, setLoading] = useState(false)
@@ -15,14 +15,22 @@ function SelectFile(){
         }
 
         if(file){
+            setLoading(true)
             sendData(file)
             .then((res) => {return res.text()})
-            .then((text) => setResponse(text))
+            .then((text) => {
+                setResponse(text)
+                setFilesCount(filesCount + 1)
+                setLoading(false)
+            })
             .catch((e) => {
                 console.error(e)
+                setLoading(false)
             })
         }
-    }, [file])
+
+        setFile(null)
+    }, [file, setFilesCount, filesCount])
 
     const handleSubmit = (e) => {
         const file = e.target.files[0]

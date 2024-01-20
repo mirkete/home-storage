@@ -12,8 +12,9 @@
     width: 12px;
     height: 12px;
     border-radius: 50%;
+    border: 3px solid transparent;
     border-right: 3px solid var(--color3);
-    animation: rotate .3s infinite;
+    animation: rotate 1s infinite;
 }
 
 .form{
