@@ -20,8 +20,10 @@
 .form{
     display: flex;
     flex-direction: column;
+    place-self: center;
     text-align: center;
     padding: 16px;
+    margin: 90px 0px;
     gap: 10px;
     border-radius: 16px;
     background-color: var(--color3);

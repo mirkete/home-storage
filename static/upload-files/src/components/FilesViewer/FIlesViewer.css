@@ -1,11 +1,26 @@
-.files-viewer{
-    margin: 0;
-    padding: 0;
+.fw-table{
+    display: block;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    overflow-x: auto;
+    text-align: left;
+    border-collapse:collapse;
 }
 
-.file{
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    gap: 30px;
+.fw-table tr{
+    border-bottom: 2px solid var(--color3);
+}
+
+.fw-table thead td{
+    padding: 12px;
+    border-bottom: 2px solid var(--color3);
+}
+.fw-table tbody td{
+    padding: 12px;
+}
+
+@media (width >= 800px){
+    .fw-table{
+        justify-self: center;
+    }
 }
