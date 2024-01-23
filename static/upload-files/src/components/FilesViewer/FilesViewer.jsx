@@ -1,18 +1,7 @@
-import { useEffect, useState } from "react"
-import { API_URL } from "../../constants.js"
 import { File } from "../File/File.jsx"
 import "./FilesViewer.css"
 
-function FilesViewer({filesCount}){
-
-    const [files, setFiles] = useState([])
-
-    
-    useEffect(() => {
-        fetch(`${API_URL}/files`)
-        .then((res) => {return res.json()})
-        .then((data) => setFiles(data))
-    }, [filesCount])
+function FilesViewer({files}){
 
     return(
         <table className="fw-table">

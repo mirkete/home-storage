@@ -7,6 +7,7 @@
 
 *{
   box-sizing: border-box;
+  font-size: 16px;
 }
 
 html, body{
@@ -20,7 +21,7 @@ html, body{
 .container{
   min-height: 100vh;
   display: grid;
-  grid-template: auto 1fr / minmax(80vw, 800px);
+  grid-template: auto 1fr / minmax(80vw, 600px);
   place-content: center;
   overflow: hidden;
   padding: 16px;

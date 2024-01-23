@@ -1,16 +1,23 @@
 import "./App.css"
 import { SelectFile } from "./components/SelectFile/SelectFile.jsx"
 import {FilesViewer} from "./components/FilesViewer/FilesViewer.jsx"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { API_URL } from "./constants.js"
 
 function App(){
 
-  const [filesCount, setFilesCount] = useState([])
+  const [files, setFiles] = useState([])
+
+  useEffect(() => {
+    fetch(`${API_URL}/files`)
+      .then((res) => {return res.json()})
+      .then((data) => setFiles(data))
+  }, [])
 
   return(
     <div className="container">
-      <SelectFile filesCount={filesCount} setFilesCount={setFilesCount}></SelectFile>
-      <FilesViewer filesCount={filesCount}></FilesViewer>
+      <SelectFile setFiles={setFiles}></SelectFile>
+      <FilesViewer files={files}></FilesViewer>
     </div>
   )
 }

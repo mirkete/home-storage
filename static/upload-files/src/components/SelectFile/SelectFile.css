@@ -1,51 +1,51 @@
-@keyframes rotate{
-    from{
-        rotate: 0deg;
-    }
-
-    to{
-        rotate: 360deg;
-    }
-}
-
-.spinner{
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    border: 3px solid transparent;
-    border-right: 3px solid var(--color3);
-    animation: rotate 1s infinite;
-}
-
-.form{
+.fu-container{
     display: flex;
     flex-direction: column;
     place-self: center;
-    text-align: center;
-    padding: 16px;
-    margin: 90px 0px;
-    gap: 10px;
-    border-radius: 16px;
-    background-color: var(--color3);
+    align-items: center;
+    gap: 12px;
+    max-width: 300px;
+    margin: 36px 0px;
+    min-height: 200px;
 }
 
-.form > *{
-    flex: 1 1 100%;
+.fu-text{
+    font-size: 36px;
 }
 
-.primary-button{
-    align-self: center;
-    background-color: #1feecb;
+.fu-or{
+    font-size: 24px;
+    opacity: 90%;
+}
+
+.fu-form{
+    display: flex;
+    align-self: stretch;
+}
+
+.fu-button{
+    flex-grow: 1;
+    cursor: pointer;
     padding: 12px;
+    font-size: 24px;
+    font-weight: 600;
+    border-radius: 12px;
     outline: none;
     border: none;
-    border-radius: 12px;
-    box-shadow: 0px 0px 6px -3px #1feecb;
-    cursor: pointer;
+    background-color: var(--color4);
+    border: 2px solid transparent;
     color: var(--color1);
+    transition: all .15s ease;
 }
 
-.form input{
+.fu-button:hover{
+    background-color: var(--color1);
+    color: var(--color4);
+    border: 2px solid var(--color4);
+    transition: all .15s ease;
+}
+
+.fu-file-input{
     display: none;
 }
 

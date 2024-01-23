@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import fs from 'node:fs/promises'
 import path from 'node:path'
+import { getFiles } from '../logic/getFiles.js'
 
 function createRouter () {
   const mainRouter = Router()
@@ -10,25 +11,11 @@ function createRouter () {
   })
 
   mainRouter.get('/files', async (req, res) => {
-    try {
-      const files = await fs.readdir(path.join(process.cwd(), 'files'))
+    const files = await getFiles()
 
-      for (let i = 0; i < files.length; i++) {
-        const extName = path.extname(files[i])
-        const type = extName ? 'file' : 'folder'
+    if (files) return res.status(200).json(files)
 
-        files[i] = {
-          name: files[i],
-          type
-        }
-      }
-
-      const orderedFiles = files.sort((a, b) => a.type === 'folder' ? -1 : 1)
-
-      res.status(200).json(orderedFiles)
-    } catch (e) {
-      res.status(500).send('server error')
-    }
+    return res.status(500).send('Server error')
   })
 
   mainRouter.post('/upload', async (req, res) => {
@@ -40,9 +27,9 @@ function createRouter () {
     try {
       const { name, data } = file
       await fs.writeFile(path.join(process.cwd(), 'files', name), data, { encoding: 'utf-8' })
-      res.status(200).send('file uploaded!')
+      const files = await getFiles()
+      res.status(201).json(files)
     } catch (e) {
-      console.log(e)
       res.status(500).send('server error')
     }
   })
