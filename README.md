@@ -5,13 +5,13 @@ Esta aplicación te permite almacenar, subir y descargar archivos desde cualquie
 Para utilizar la aplicación, se debe tener instalado Node.js y npm previamente. Los archivos que sean cargados en la aplicación se almacenaran en el dispositivo que la ejecute.
 
 1. **Crear copia local del repositorio (clonar/fork)**
-3. **Instalar dependencias**
+3. **Instalar dependencias:**
 Se deben instalar las dependencias del proyecto. Son muy pocas, por lo que la descarga es minima. El comando para hacerlo es el siguiente:
 ```
 npm install
 ```
 
-3. **Ejecutar la aplicación**
+3. **Ejecutar la aplicación:**
 Para poner en marcha la aplicación se debe ejecutar el siguiente comando:
 ```
 npm start
