@@ -3,7 +3,7 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import { getFiles } from '../logic/getFiles.js'
 
-function createRouter () {
+function createAPIRouter () {
   const mainRouter = Router()
 
   mainRouter.get('/', (req, res) => {
@@ -15,7 +15,23 @@ function createRouter () {
 
     if (files) return res.status(200).json(files)
 
-    return res.status(500).send('Server error')
+    res.status(500).send('Server error')
+  })
+
+  mainRouter.get('/files/:fileName', async (req, res) => {
+    const { fileName } = req.params
+
+    if (!fileName) return res.status(400).send('File not found')
+
+    try {
+      const filePath = path.join(process.cwd(), 'files', fileName)
+
+      res.setHeader('Content-Disposition', `attachment;filename="${fileName}"`)
+
+      res.sendFile(filePath)
+    } catch (e) {
+      res.status(500).send('SERVER ERROR')
+    }
   })
 
   mainRouter.post('/upload', async (req, res) => {
@@ -37,4 +53,4 @@ function createRouter () {
   return mainRouter
 }
 
-export { createRouter }
+export { createAPIRouter }

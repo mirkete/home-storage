@@ -1,0 +1,5 @@
+.fl-download-anchor{
+    display: flex;
+    place-content: center;
+    color: var(--color4);
+}
