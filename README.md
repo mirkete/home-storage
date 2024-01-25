@@ -2,8 +2,8 @@
 Esta aplicación te permite almacenar, subir y descargar archivos desde cualquier dispositivo conectado a tu red. Logra altas velocidades de transferencia ya que se maneja por red local y no por internet.
 
 <div>
-  <img width="500" src="https://github.com/mirkete/my-own-cloud-storage/assets/67495604/52566ccc-0983-4867-b1cb-f1251c9699a3" />
-  <img width="450" src="https://github.com/mirkete/my-own-cloud-storage/assets/67495604/ee054b30-e917-4352-ad1a-d6c03b07f669" />
+  <img width="350" src="https://github.com/mirkete/my-own-cloud-storage/assets/67495604/52566ccc-0983-4867-b1cb-f1251c9699a3" />
+  <img width="300" src="https://github.com/mirkete/my-own-cloud-storage/assets/67495604/ee054b30-e917-4352-ad1a-d6c03b07f669" />
 </div>
 
 ## Iniciar
