@@ -46,12 +46,12 @@ function SelectFile({setFiles}){
         <div onDragOver={handleDrag} onDragLeave={() => {setDragging(false)}} onDrop={handleDrop} className="fu-container">
             <UploadFile size="64" color={PAGE_COLORS[0]}></UploadFile>
             <span className="fu-text">
-                {!dragging ? "Drag and drop file" : "Drop file here!"}
+                {!dragging ? "Arrastrar y soltar archivo" : "Soltar archivo aqui!"}
             </span>
-            <span className="fu-or">or </span>
+            <span className="fu-or"> o </span>
             <form className="fu-form">
                 <label style={{textAlign:"center"}} className="fu-button" htmlFor="file">
-                    Browse
+                    Buscar
                 </label>
                 <input onChange={handleSubmit} type="file" id="file" className="fu-file-input"/>
             </form>

@@ -7,19 +7,18 @@ import "./File.css"
 
 export function File({fileData}){
 
-    const {name, type, size, lastTime} = fileData
-    
-    const getIcon = (type) => {
-        if(type === "file") return <FileIcon color={PAGE_COLORS[0]}/>
-        
-        return <FolderIcon color={PAGE_COLORS[0]}/>
-    }
+    const {name, type, size:fileSize, lastTime} = fileData
+
+    const icon = type ? <FileIcon color={PAGE_COLORS[0]}/> : <FolderIcon color={PAGE_COLORS[0]}/>
+    const size = type ? `${Math.ceil(fileSize / 1000)} KB` : "" 
 
     const getDownloadURL = (fileName) => {
         return `${API_URL}/files/${fileName}`
     }
 
-    const getFileDate = (lastTime) => {
+    const getFileDate = (lastTime, type) => {
+
+        if(!type) return ""
 
         const dateObj = new Date(lastTime)
 
@@ -33,15 +32,18 @@ export function File({fileData}){
 
     return(
         <tr>
-            <td>{getIcon(type)} </td>
+            <td> {icon} </td>
             <td> {name} </td>
             <td> {type} </td>
-            <td> {Math.ceil(size / 1000)} KB</td>
-            <td> {getFileDate(lastTime)} </td>
+            <td> {size} </td>
+            <td> {getFileDate(lastTime, type)} </td>
             <td> 
-                <a className="fl-download-anchor" href={getDownloadURL(name)}>
-                    <DownloadIcon></DownloadIcon>
-                </a> 
+                {
+                    type &&
+                    <a className="fl-download-anchor" href={getDownloadURL(name)}>
+                        <DownloadIcon></DownloadIcon>
+                    </a> 
+                }
             </td>
         </tr>
     )
