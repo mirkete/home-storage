@@ -10,25 +10,21 @@ Esta aplicación te permite almacenar, subir y descargar archivos desde cualquie
 Para utilizar la aplicación, se debe tener instalado Node.js y npm previamente. Los archivos que sean cargados en la aplicación se almacenaran en el dispositivo que la ejecute.
 
 1. **Crear copia local del repositorio (clonar/fork)**
-3. **Instalar dependencias:**
+
+2. **Instalar dependencias:**
 Se deben instalar las dependencias del proyecto. Son muy pocas, por lo que la descarga es minima. El comando para hacerlo es el siguiente:
 ```
 npm install
 ```
 
-3. **Configurar URL de la API y hacer build:**
-En el archivo `static/upload-files/src/constants.js` se debera cambiar la constante `API_URL` por la dirección IP local (mas adelante explico como obtenerla). Luego, en la misma ruta, se debe ejecutar el comando `npm run build`.
-> [!NOTE]
-> Estoy trabajando en remover este paso del proceso.
-
-4. **Ejecutar la aplicación:**
+3. **Ejecutar la aplicación:**
 Para poner en marcha la aplicación se debe ejecutar el siguiente comando:
 ```
 npm start
 ```
 
 ## Como usar?
-Una vez que se haya ejecutado la app, el sitio web estara disponible en el puerto 3000 del host local. [Ver aqui](http://localhost:3000/). Para acceder desde otro dispositivo se debera
+Una vez que se haya ejecutado la app, el sitio web estara disponible en el puerto 3000 del host local. [Ver aqui](http://localhost:3000/). Para acceder a los archivos se debera
 obtener la direccion IP local del equipo.
 
 ### Obtener dirección IP
