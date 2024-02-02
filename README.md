@@ -16,7 +16,12 @@ Se deben instalar las dependencias del proyecto. Son muy pocas, por lo que la de
 npm install
 ```
 
-3. **Ejecutar la aplicación:**
+3. **Configurar URL de la API y hacer build:**
+En el archivo `static/upload-files/src/constants.js` se debera cambiar la constante `API_URL` por la dirección IP local (mas adelante explico como obtenerla). Luego, en la misma ruta, se debe ejecutar el comando `npm run build`.
+> [!NOTE]
+> Estoy trabajando en remover este paso del proceso.
+
+4. **Ejecutar la aplicación:**
 Para poner en marcha la aplicación se debe ejecutar el siguiente comando:
 ```
 npm start
