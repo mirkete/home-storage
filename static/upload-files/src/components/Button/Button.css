@@ -1,0 +1,21 @@
+.bt-main{
+    flex-grow: 1;
+    cursor: pointer;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 12px;
+    outline: none;
+    border: none;
+    background-color: var(--color4);
+    border: 2px solid transparent;
+    color: var(--color1);
+    transition: all .15s ease;
+}
+
+.bt-main:hover{
+    background-color: var(--color1);
+    color: var(--color4);
+    border: 2px solid var(--color4);
+    transition: all .15s ease;
+}

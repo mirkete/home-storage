@@ -19,8 +19,8 @@
     padding: 12px;
 }
 
-@media (width >= 800px){
+@media (width >= 600px){
     .fw-table{
-        justify-self: center;
+        align-self: center;
     }
 }

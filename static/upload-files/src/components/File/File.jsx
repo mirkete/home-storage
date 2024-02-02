@@ -1,11 +1,10 @@
 import { FileIcon } from "../../icons/FileIcon.jsx"
 import { FolderIcon } from "../../icons/FolderIcon.jsx"
 import { PAGE_COLORS } from "../../constants.js"
-import { API_URL } from "../../constants.js"
 import { DownloadIcon } from "../../icons/DownloadIcon.jsx"
 import "./File.css"
 
-export function File({fileData}){
+export function File({fileData, apiUrl}){
 
     const {name, type, size:fileSize, lastTime} = fileData
 
@@ -13,7 +12,7 @@ export function File({fileData}){
     const size = type ? `${Math.ceil(fileSize / 1000)} KB` : "" 
 
     const getDownloadURL = (fileName) => {
-        return `${API_URL}/files/${fileName}`
+        return `http://${apiUrl}/api/files/${fileName}`
     }
 
     const getFileDate = (lastTime, type) => {

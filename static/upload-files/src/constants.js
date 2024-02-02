@@ -1,4 +1,4 @@
-export const API_URL = "http://192.168.1.40:3000/api"
+export const API_URL = "http://192.168.1.34:3000/api"
 
 export const PAGE_COLORS = [ 
     "#1feecb",
