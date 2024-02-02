@@ -12,7 +12,7 @@ export function File({fileData, apiUrl}){
     const size = type ? `${Math.ceil(fileSize / 1000)} KB` : "" 
 
     const getDownloadURL = (fileName) => {
-        return `http://${apiUrl}/api/files/${fileName}`
+        return `http://${apiUrl}:3000/api/files/${fileName}`
     }
 
     const getFileDate = (lastTime, type) => {
