@@ -4,15 +4,16 @@ import { PAGE_COLORS } from "../../constants.js"
 import { DownloadIcon } from "../../icons/DownloadIcon.jsx"
 import "./File.css"
 
-export function File({fileData, apiUrl}){
+export function File({fileData, apiHostName}){
 
     const {name, type, size:fileSize, lastTime} = fileData
 
     const icon = type ? <FileIcon color={PAGE_COLORS[0]}/> : <FolderIcon color={PAGE_COLORS[0]}/>
     const size = type ? `${Math.ceil(fileSize / 1000)} KB` : "" 
+    const typeClass = type === "" ? "folder" : ""
 
     const getDownloadURL = (fileName) => {
-        return `http://${apiUrl}:3000/api/files/${fileName}`
+        return `http://${apiHostName}:3000/api/files/${fileName}`
     }
 
     const getFileDate = (lastTime, type) => {
@@ -30,7 +31,7 @@ export function File({fileData, apiUrl}){
     }
 
     return(
-        <tr>
+        <tr class={typeClass}>
             <td> {icon} </td>
             <td> {name} </td>
             <td> {type} </td>

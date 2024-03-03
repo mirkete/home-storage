@@ -4,15 +4,18 @@ import { UploadFile } from "../../icons/UploadFile.jsx"
 import { PAGE_COLORS } from "../../constants.js"
 import "./SelectFile.css"
 
-function SelectFile({setFiles}){
+function SelectFile({setFiles, apiHostName, setUploadStatus}){
 
     const [dragging, setDragging] = useState(false)
+    const isDraggingClass = dragging ?  "fu-container fu-container-dragging" : null
 
     const makeFileUpload = (file) => {
-        uploadFile(file)
+        setUploadStatus("loading")
+        uploadFile(file, apiHostName)
             .then((res) => res.json())
             .then((data) => {
                 setFiles(data)
+                setUploadStatus("uploaded")
             })
     }
 
@@ -43,7 +46,7 @@ function SelectFile({setFiles}){
     }
 
     return(
-        <div onDragOver={handleDrag} onDragLeave={() => {setDragging(false)}} onDrop={handleDrop} className="fu-container">
+        <div onDragOver={handleDrag} onDragLeave={() => {setDragging(false)}} onDrop={handleDrop} className={"fu-container " + isDraggingClass}>
             <UploadFile size="64" color={PAGE_COLORS[0]}></UploadFile>
             <span className="fu-text">
                 {!dragging ? "Arrastrar y soltar archivo" : "Soltar archivo aqui!"}

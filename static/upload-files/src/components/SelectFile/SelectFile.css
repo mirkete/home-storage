@@ -7,6 +7,12 @@
     max-width: 300px;
     margin: 36px 0px;
     min-height: 200px;
+    padding: 16px;
+}
+
+.fu-container-dragging{
+    border: 2px solid var(--color4);
+    border-style: dashed;
 }
 
 .fu-text{

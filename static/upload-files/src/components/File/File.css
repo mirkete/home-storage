@@ -1,3 +1,11 @@
+.folder{
+    cursor: pointer;
+}
+
+.folder:hover td{
+    text-decoration: underline;
+}
+
 .fl-download-anchor{
     display: flex;
     place-content: center;

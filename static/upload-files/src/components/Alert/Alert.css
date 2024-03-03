@@ -1,0 +1,22 @@
+.alert{
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  color: white;
+  background-color: #1f1f1f;
+  border-left: 4px solid cyan;
+  height: 60px;
+  padding: 0 24px;
+  position: absolute;
+  top: 48px;
+  transition: all .5s ease;
+  right: 0px;
+}
+
+.alert-on{
+  transform: translateX(10px)
+}
+
+.alert-off{
+  transform: translateX(100%)
+}

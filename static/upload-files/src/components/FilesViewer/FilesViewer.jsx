@@ -1,7 +1,7 @@
 import { File } from "../File/File.jsx"
 import "./FilesViewer.css"
 
-function FilesViewer({files, apiUrl}){
+function FilesViewer({files, apiHostName}){
 
     return(
         <table className="fw-table">
@@ -18,7 +18,7 @@ function FilesViewer({files, apiUrl}){
             <tbody>
                 {
                     files.map((file, i) => {
-                        return <File apiUrl={apiUrl} key={"file" + i} fileData={file}></File>
+                        return <File apiHostName={apiHostName} key={"file" + i} fileData={file}></File>
                     })
                 }
             </tbody>

@@ -1,11 +1,9 @@
-import { API_URL } from "../constants.js"
-
-export async function uploadFile(file){
+export async function uploadFile (file, apiHostName) {
 
     const formData = new FormData()
     formData.append("file", file)
 
-    const res = await fetch(`${API_URL}/upload`, {
+    const res = await fetch(`http://${apiHostName}:3000/api/upload`, {
         method: "POST",
         body: formData
     })
