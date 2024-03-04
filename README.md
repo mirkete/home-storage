@@ -24,7 +24,7 @@ npm start
 ```
 
 ## Como usar?
-Una vez que se haya ejecutado la app, el sitio web estara disponible en el puerto 3000 del host local. [Ver aqui](http://localhost:3000/). Para acceder a los archivos se debera
+Una vez que se haya ejecutado la app, el sitio web estara disponible en el puerto 3000 del host local. [Ver aqui](http://localhost:3000/). Para acceder a los archivos desde otro dispositivo se debera
 obtener la direccion IP local del equipo.
 
 ### Obtener dirección IP
@@ -35,5 +35,8 @@ ipconfig
 Al hacerlo, se mostrara una variedad de información. Se necesita solo la dirección IPV4:
 ![Imagen de la consola al ejecutar el comando ipconfig](https://signal.avg.com/hs-fs/hubfs/Blog_Content/Avg/Signal/AVG%20Signal%20Images/how_to_find_your_ip_address_signal_refresh/img-09.png?width=614&height=424&name=img-09.png)
 
-Luego, la URL del sitio web sera la siguiente: 
+Luego, la URL de la aplicación web sera la siguiente: 
 **https://*direccion_obtenida*:3000**
+
+### Avisos
+- ⚠️ Por problemas con React Router, **el maximo de anidamiento de carpetas es 1 (uno)**. Esto quiere decir que las carpetas del directorio raiz **no podran tener otras carpetas dentro.**
