@@ -1,21 +1,26 @@
-import { useState } from "react"
+import "./SelectFile.css"
+import { useState, useContext } from "react"
 import { uploadFile } from "../../logic/SelectFile.js"
 import { UploadFile } from "../../icons/UploadFile.jsx"
 import { PAGE_COLORS } from "../../constants.js"
-import "./SelectFile.css"
+import { RouteContext } from "../../contexts/RouteContext.js"
 
-function SelectFile({setFiles, apiHostName, setUploadStatus}){
+function SelectFile({setUploadStatus, setFiles}){
 
     const [dragging, setDragging] = useState(false)
     const isDraggingClass = dragging ?  "fu-container fu-container-dragging" : null
 
+    const route = useContext(RouteContext)
+    const hostname = route?.hostname ?? null
+    const path = route?.path ?? null
+
     const makeFileUpload = (file) => {
         setUploadStatus("loading")
-        uploadFile(file, apiHostName)
+        uploadFile(file, hostname, path)
             .then((res) => res.json())
             .then((data) => {
-                setFiles(data)
                 setUploadStatus("uploaded")
+                setFiles(data)
             })
     }
 

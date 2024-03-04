@@ -18,7 +18,6 @@ export function Alert({status, setStatus}){
   }
 
   useEffect(() => {
-    console.log(status)
     const hideAlert = () => {
       setStatus("off")
     }

@@ -11,3 +11,8 @@
     place-content: center;
     color: var(--color4);
 }
+
+.folder td a{
+    text-decoration: none;
+    color: var(--color2);
+}

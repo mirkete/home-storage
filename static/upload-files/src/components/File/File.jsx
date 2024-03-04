@@ -1,20 +1,37 @@
+import "./File.css"
+import { useContext } from "react"
 import { FileIcon } from "../../icons/FileIcon.jsx"
 import { FolderIcon } from "../../icons/FolderIcon.jsx"
 import { PAGE_COLORS } from "../../constants.js"
 import { DownloadIcon } from "../../icons/DownloadIcon.jsx"
-import "./File.css"
+import { Link } from "react-router-dom"
+import { RouteContext } from "../../contexts/RouteContext.js"
 
-export function File({fileData, apiHostName}){
+export function File({fileData}){
 
     const {name, type, size:fileSize, lastTime} = fileData
+    const route = useContext(RouteContext)
+    const {hostname, path} = route
 
     const icon = type ? <FileIcon color={PAGE_COLORS[0]}/> : <FolderIcon color={PAGE_COLORS[0]}/>
     const size = type ? `${Math.ceil(fileSize / 1000)} KB` : "" 
     const typeClass = type === "" ? "folder" : ""
 
-    const getDownloadURL = (fileName) => {
-        return `http://${apiHostName}:3000/api/files/${fileName}`
+    const NameElement = () => {
+        if(type === ""){
+            return (
+                <Link to={`${path}${name}`}>
+                    {name}
+                </Link>
+            )
+        }
+        return <p>{name}</p>
     }
+
+    const getDownloadURL = (fileName) => {
+        return `http://${hostname}:3000/api/files${path}/${fileName}`
+    }
+
 
     const getFileDate = (lastTime, type) => {
 
@@ -31,9 +48,9 @@ export function File({fileData, apiHostName}){
     }
 
     return(
-        <tr class={typeClass}>
+        <tr className={typeClass}>
             <td> {icon} </td>
-            <td> {name} </td>
+            <td> <NameElement/> </td>
             <td> {type} </td>
             <td> {size} </td>
             <td> {getFileDate(lastTime, type)} </td>

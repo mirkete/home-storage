@@ -1,7 +1,27 @@
+import { useContext, useState, useEffect } from "react"
+import { RouteContext } from "../../contexts/RouteContext.js"
 import { File } from "../File/File.jsx"
 import "./FilesViewer.css"
 
-function FilesViewer({files, apiHostName}){
+function FilesViewer({files, setFiles}){
+
+    const route = useContext(RouteContext)
+    const hostname = route?.hostname ?? null
+    const path = route?.path ?? "loading"
+
+    useEffect(() => {
+    const controller = new AbortController()
+    const signal = controller.signal
+    if(hostname && path !== "loading"){
+        fetch(`http://${hostname}:3000/api/files${path}`, {signal})
+        .then((res) => res.json())
+        .then((data) => setFiles(data))
+    }
+
+    return () => {
+        controller.abort()
+    }
+    }, [hostname, path])
 
     return(
         <table className="fw-table">
@@ -18,7 +38,7 @@ function FilesViewer({files, apiHostName}){
             <tbody>
                 {
                     files.map((file, i) => {
-                        return <File apiHostName={apiHostName} key={"file" + i} fileData={file}></File>
+                        return <File key={"file" + i} fileData={file}></File>
                     })
                 }
             </tbody>
