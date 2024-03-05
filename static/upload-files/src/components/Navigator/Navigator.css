@@ -1,0 +1,29 @@
+.navigator{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.nav-tag{
+  position: relative;
+  padding: 10px;
+  border-radius: 12px;
+  font-size: 14px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-tag-slash::after{
+  content:"/";
+  position:absolute;
+  color: grey;
+  right: -16px;
+}
+
+.nav-tag:hover{
+  background-color: rgb(255,255,255,.4);
+  cursor: pointer;
+}

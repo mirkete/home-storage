@@ -4,11 +4,12 @@ import { FileIcon } from "../../icons/FileIcon.jsx"
 import { FolderIcon } from "../../icons/FolderIcon.jsx"
 import { PAGE_COLORS } from "../../constants.js"
 import { DownloadIcon } from "../../icons/DownloadIcon.jsx"
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { RouteContext } from "../../contexts/RouteContext.js"
 
 export function File({fileData}){
 
+    const navigate = useNavigate()
     const {name, type, size:fileSize, lastTime} = fileData
     const route = useContext(RouteContext)
     const {hostname, path} = route
@@ -17,15 +18,24 @@ export function File({fileData}){
     const size = type ? `${Math.ceil(fileSize / 1000)} KB` : "" 
     const typeClass = type === "" ? "folder" : ""
 
-    const NameElement = () => {
+    const openFolder = () => {
+        navigate(`${path}${name}`)
+    }
+
+    const FileElement = ({children}) => {
         if(type === ""){
             return (
-                <Link to={`${path}${name}`}>
-                    {name}
-                </Link>
+                <tr onClick={openFolder} className={typeClass}>
+                    <td>{icon}</td>
+                    <td>{name}</td>
+                    <td>{""}</td>
+                    <td>{""}</td>
+                    <td>{""}</td>
+                    <td>{""}</td>
+                </tr>
             )
         }
-        return <p>{name}</p>
+        return <tr className={typeClass}>{children}</tr>
     }
 
     const getDownloadURL = (fileName) => {
@@ -48,9 +58,9 @@ export function File({fileData}){
     }
 
     return(
-        <tr className={typeClass}>
+        <FileElement>
             <td> {icon} </td>
-            <td> <NameElement/> </td>
+            <td> {name} </td>
             <td> {type} </td>
             <td> {size} </td>
             <td> {getFileDate(lastTime, type)} </td>
@@ -62,6 +72,6 @@ export function File({fileData}){
                     </a> 
                 }
             </td>
-        </tr>
+        </FileElement>
     )
 }

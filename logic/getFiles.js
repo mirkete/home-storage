@@ -10,7 +10,8 @@ export async function getFiles () {
       const filePath = path.join(process.cwd(), 'files', fileName)
 
       const extName = path.extname(fileName)
-      const type = extName ?? 'Folder'
+      const type = extName
+
       const { size, mtime: lastTime } = await fs.stat(filePath)
 
       files[i] = {
@@ -20,8 +21,7 @@ export async function getFiles () {
         lastTime
       }
     }
-
-    const orderedFiles = files.sort((a, b) => a.type === 'Folder' ? -1 : 1)
+    const orderedFiles = files.sort((a, b) => a.type === '' ? -1 : 1)
 
     return orderedFiles
   } catch (e) {

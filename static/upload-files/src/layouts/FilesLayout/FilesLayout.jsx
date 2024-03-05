@@ -1,7 +1,7 @@
 import "./FilesLayout.css"
 import { useState, useEffect } from "react"
 import { RouteContext } from "../../contexts/RouteContext"
-
+import { Navigator } from "../../components/Navigator/Navigator"
 
 export function FilesLayout({children}){
 
@@ -21,6 +21,7 @@ export function FilesLayout({children}){
   return(
     <div className="container">
       <RouteContext.Provider value={route}>
+        <Navigator></Navigator>
         {children}
       </RouteContext.Provider>
     </div>
