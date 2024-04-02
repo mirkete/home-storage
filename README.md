@@ -17,8 +17,12 @@ Se deben instalar las dependencias del proyecto. Son muy pocas, por lo que la de
 npm install
 ```
 
-3. **Ejecutar la aplicación:**
-Para poner en marcha la aplicación se debe ejecutar el siguiente comando:
+3. **Crear build y ejecutar la aplicación:**
+Para hacer build se debe ejecutar el siguiente comando.
+```
+npm run build
+```
+Por ultimo, se debe poner en marcha la aplicación:
 ```
 npm start
 ```

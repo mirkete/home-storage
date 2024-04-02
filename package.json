@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "cd static/upload-files && npm run build",
+    "build": "cd static/upload-files && npm install && npm run build",
     "dev": "nodemon index.js",
     "start": "node index.js"
   },
